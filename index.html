@@ -1,0 +1,226 @@
+﻿<!DOCTYPE HTML>
+<html ng-app='myApp'>
+<head>
+	<title>Employee Table</title>
+<!-- AngularJS-->
+     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+<!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
+<link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<!-- <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
+<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"> </script>
+
+	<script type="text/javascript" src="main.js"></script>
+   <script type="text/javascript" src="Angular.js"></script>
+	<link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+
+ <nav role="navigation" class="navbar navbar-default navbar-fixed-top">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a href="#" class="navbar-brand">Бренд</a>
+  </div>
+  <!-- Collection of nav links, forms, and other content for toggling -->
+  <div id="navbarCollapse" class="collapse navbar-collapse">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Главная</a></li>
+      <li><a href="#">Статьи</a></li>
+      <li><a href="#">Новости</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right" style="padding-right:15px">
+      <li><a href="#"><span class="glyphicon glyphicon-star"></span>Войти</a></li>
+    </ul>
+  </div>
+</nav>
+  
+  <div class="container-fluid">
+    <div class="row"> 
+        <div class="col-xs-4 col-sm-3 col-md-2 col-lg-2">
+            <div class="row">
+              <div class="panel panel-default" >
+               <div class="list-group">
+                 <a class="list-group-item" href="#"><span style="text-align:justify">Link 1</span></a>
+                 <a class="list-group-item" href="#">Link efef ewf  2</a>
+               </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="col-xs-8 col-sm-9 col-md-10 col-lg-10">
+            <div class="row">
+              <div class="col-md-11">
+
+                <ul id="myTab" class="nav nav-tabs">
+                  <li class="active"><a href="#panel1">Стажеры</a></li>
+                  <li><a href="#panel2">Операторы</a></li>
+                  <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                      Другие панели 
+                      <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#panel3">Панель 3</a></li>
+                      <li><a href="#panel4">Панель 4</a></li>
+                    </ul>
+                  </li>
+                </ul>
+
+                <div class="tab-content">
+                  <div id="panel1" class="tab-pane fade in active">
+                     
+                     
+                     <form action="main.php" method="post" class=" fgf">
+                        <h3>Добавить стажера 
+                           <button id="submit" class="btn btn-primary">
+                              Сохранить
+                           </button> 
+                        </h3>
+
+                        <a id="submitt" class="btn btn-primary">Сохранить AJAX</a><br><br>
+                        <span><a class="add btn btn-success">Добавить поле</a></span>
+                        <div class="row">
+                           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                              <div class="col-xs-8 dt">
+                                 <input type="date" class="form-control date" name="data[date]">
+                                <div class="error">*fwefewf111</div>
+                              </div>
+
+                              <div class="col-xs-8 pdng ldp">  
+                                 <input type="text" class="form-control login" placeholder="LDAP"  maxlength="12" name="data[login]">
+                                  <!-- <div>fwefewf111</div> -->
+                              </div>
+                              <div class="col-xs-8  pdng fio">
+                                 <input type="text" class="form-control" placeholder="ФИО" name="data[fio]">
+                              </div>
+                              <div class="col-xs-8 pdng clid">
+                                 <input type="text" class="form-control id" placeholder="ID" maxlength="10" name="data[ID]">
+                              </div>
+                              <div class="col-xs-8 pdng comm">
+                                 <input type="text" class="form-control id" placeholder="Comment" name="data[ID]">  
+                              </div>     
+                           </div>
+                        </div>
+                     </form>
+                     <span id='error'>d</span>
+                    
+                     <div class="row" >
+                        <div class="col-md-6 col-lg-6" ng-controller='myController as tr'>
+                           <div ng-controller='myController as tt'>
+                              <a ID = 'ajax' class="btn btn-primary"  ng-click="tt.getTrainees()">запрос стажеров AJAX {{tt.data.state}}
+                              </a><br><br>
+                              <ng-include src="tt.Template"></ng-include>
+                           </div>
+                        </div>
+                     </div>
+                  </div> <!-- end of first panel -->
+                  
+                  <div id="panel2" class="tab-pane fade">
+                    <h3>Операторы</h3>
+                     
+                     <input class='form-control' type="text" name="search" placeholder="Найти оператора" />
+
+                     <div class="row">
+                        <div class="col-md-4 col-lg-4">
+                           <table class="table table-striped table-bordered table-hover table-condensed">
+                           <caption>Работают</caption>
+                              <tr>
+                                 <th>Принят</th>
+                                 <th>LDAP</th>
+                                 <th>ID</th>
+                              </tr>
+                              <tr>
+                                 <td>2016.04.01</td>
+                                 <td>DN040691KJA</td>
+                                 <td>123456789</td>
+                              </tr>
+                              <tr>
+                                 <td>2013.03.01</td>
+                                 <td>DN120483GVN</td>
+                                 <td>123456789</td>
+                              </tr>
+                           </table>
+                        </div>
+                     </div>     
+                  </div> <!-- end of secod panel -->
+
+                  <div id="panel3" class="tab-pane fade">
+                    <h3>Панель 3</h3>
+                    <p>Содержимое 3 панели...</p>
+                  </div>
+                  <div id="panel4" class="tab-pane fade">
+                    <h3>Панель 4</h3>
+                    <p>Содержимое 4 панели...</p>
+                  </div>
+                </div>
+                
+              </div> 
+            </div>
+            
+            
+                     
+
+              </div>
+            </div>
+            
+                <p style="text-align: justify"> 
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                   tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  
+                </p>     
+            <div ng-controller='myController as try'>
+              <h1>Test Angular {{try.array.length}} </h1> 
+              <p ng-model='try.data.name'> Hi! {{try.data.name}} </p>
+              <ol>
+                 <li ng-repeat='item in try.array'>  
+                  What are u doing now? - {{item.study}} <br>
+                  Are you shoure about this? - <input type="checkbox" ng-model='item.done'> <!-- ng-model='try.blat' -->  
+                 </li>
+                 <p> {{try.blat}} </p>
+              </ol>
+           
+            
+                  <div >
+                     <input type="text" ng-model="try.bla"> <button class='btn btn-default rtt' ng-click='try.AddList()'> Add </button>
+                  </div>
+                  <p> {{try.bla}} </p>
+
+                  <button class="btn btn-danger" ng-click='try.Del()'> Delete element</button>
+              
+
+             </div>
+         
+        </div>
+
+
+        
+    </div> 
+
+ 
+
+  </div>
+   
+
+
+</body>
+</html>
